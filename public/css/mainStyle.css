@@ -1,0 +1,89 @@
+body{
+	width: 100%;
+	margin:0px;
+	display:flex;
+	flex-direction: column;
+}
+
+a{
+	color: inherit;
+	text-decoration: none;
+}
+
+.myContainer.header{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	color:white;
+	font-family:"Impact";
+	font-size: 20px;
+}
+
+.myGreen{
+	background-color: rgb(11, 101, 128);
+}
+
+.myLightgreen{
+	background-color: rgb(80, 130, 153, 0.3);
+}
+
+.myContainer.thread-name{
+	height:30px;
+	line-height: 30px;
+	color:white;
+	font-size: 18px
+}
+
+.myContainer.thread-name.top{
+	background-color: rgb(11, 101, 128, 0.5);
+}
+
+.label.children{
+	border-radius: 3px;
+	height:20px;
+	line-height: 20px;
+	color:white;
+	padding-left: 20px;
+}
+
+.myContainer.thread-list{
+	margin:5px 8px;
+	border-radius: 1px;
+	padding:      10px;
+	background-color: rgb(80, 130, 153, 0.3);
+	display:flex;
+	flex-direction: column;
+}
+
+.hoge{
+	background-color:rgb(255, 255, 255, 1.0);
+	transition: 0.5s;
+	border-bottom:1px solid white;
+	padding:3px 10px;
+	display:flex;
+}
+
+.hoge:hover{
+		background-color: rgb(255, 255, 255, 0.5);
+		color: white;
+}
+
+.hoge .thread-title{
+	display:block;
+	flex:1;
+}
+.hoge .delete{
+	display:flex;
+}
+
+.not-top .create-thread.form{
+	overflow:hidden;
+	max-height:0px;
+	transition:0.8s;
+}
+
+.not-top .create-thread.form.open{
+	max-height:300px;
+}
+
+
