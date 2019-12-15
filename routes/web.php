@@ -15,10 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','LandingPageController@didLand');
 Route::get('/thread/id={id}','OpenThreadController@didLand');
-<<<<<<< HEAD
-=======
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
->>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
