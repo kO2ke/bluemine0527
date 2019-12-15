@@ -181,14 +181,6 @@
 			<attribute name="composer" value="vendor"/>
 		</attributes>
 	</buildpathentry>
-<<<<<<< HEAD
-=======
-	<buildpathentry kind="src" path="vendor/laravel/ui/src">
-		<attributes>
-			<attribute name="composer" value="vendor"/>
-		</attributes>
-	</buildpathentry>
->>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
 	<buildpathentry kind="src" path="vendor/league/flysystem/src">
 		<attributes>
 			<attribute name="composer" value="vendor"/>
