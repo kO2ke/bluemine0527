@@ -1,9 +1,5 @@
 @extends("layouts.main")
 
-@section("page-name")
-	- {{$thread->title}}
-@endsection
-
 @section("body-class","not-top")
 
 @section("body-contents")
