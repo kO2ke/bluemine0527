@@ -12,11 +12,20 @@
         "barryvdh/laravel-ide-helper": "^2.6",
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
+<<<<<<< HEAD
         "laravel/tinker": "^1.0",
         "fzaninotto/faker": "^1.4"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
+=======
+        "laravel/tinker": "^1.0"
+    },
+    "require-dev": {
+        "facade/ignition": "^1.4",
+        "fzaninotto/faker": "^1.4",
+        "laravel/ui": "^1.1",
+>>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^8.0"

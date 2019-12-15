@@ -15,8 +15,15 @@ a{
 	height:40px;
 	line-height: 40px;
 	color:white;
+<<<<<<< HEAD
 	font-family:"Impact";
 	font-size: 20px;
+=======
+}
+
+.myContainer.header .title{
+	font-size:20px;
+>>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
 }
 
 .myGreen{

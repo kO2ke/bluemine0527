@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!doctype html>
 
 <html lang="en">
@@ -14,10 +15,15 @@
 
 <body>
 	<div class="myContainer header top bg-secondary">////B l u e m i n e////</div>
+=======
+@extends("layouts.main")
+@section("body-contents")
+>>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
 	<div class="w-100 position-relative">
 		<div style="font-size: 15px;" class="position-absolute w-100 myContainer thread-name top m-0">Welcome to Bluemine!!</div>
 		<img alt="" src="{{$landingImg}}" class="w-100">
 	</div>
+<<<<<<< HEAD
 	<div class="myContainer thread-list top">
 		<span class="myGreen label children">Top Threads</span>
   <?php foreach ($top_threads as $thread) : ?>
@@ -55,3 +61,9 @@
 
 </body>
 </html>
+=======
+	`@include("components.threadList",["listTitle" => "Recently",   "threadArray" => $recentTh])
+	`@include("components.threadList",["listTitle" => "TOP-Thread", "threadArray" => $children])
+@endsection
+@section("list-title","TOP-Thread")
+>>>>>>> 2c52662bb030f7f96aea6fc6972a8b0cab479afc
