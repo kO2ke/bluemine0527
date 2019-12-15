@@ -39,27 +39,41 @@
 
 	<div class="container-fluid">
 		<div class="row p-3 mx-4 my-2 ">
-			<div class="text-center col-3">
-				<p>{{Auth::user()->name}}</p>
-				<img alt="" src="http://placehold.jp/150x150.png?text=Your Icon">
-			</div>
-			<div class="col-9 form">
-				<p>　</p>
-				<form action="/createPost" method="POST">
-					{{ csrf_field() }}
-					<input type="hidden" name="thread_id" value={{$thread->id}}>
-	
-					<div class="form-group">
-						<textarea class="form-control" id="content" name="content" rows="6" placeholder="Enter Message..."></textarea>
-					</div>
-					<div class="form-group">
-						<input type="submit" name="createPost" value="Post Message" class="btn btn-primary float-right">
-					</div>
-				</form>
-			</div>
+			@guest
+				Please <a class="" href="{{ route('register') }}">{{ __('Register') }} </a> or <a class="" href="{{ route('login') }}">{{ __('Login') }}</a> To Post
+			@else
+				<div class="text-center col-3">
+					
+					<p>{{Auth::user()->name}}</p>
+					<img alt="" src="http://placehold.jp/150x150.png?text=Your Icon">
+				</div>
+				<div class="col-9 form">
+					<p>　</p>
+					<form action="/createPost" method="POST">
+						{{ csrf_field() }}
+						<input type="hidden" name="thread_id" value={{$thread->id}}>
+		
+						<div class="form-group">
+							<textarea class="form-control" id="content" name="content" rows="6" placeholder="Enter Message..."></textarea>
+						</div>
+						<div class="form-group">
+							<input type="submit" name="createPost" value="Post Message" class="btn btn-primary float-right">
+						</div>
+					</form>
+				</div>
+			@endguest
 		</div>
 		@foreach ($thread->posts()->latest()->get() as $post)
-		<div class="row p-3 mx-4 my-5 border rounded">
+		{{-- make　Posting Css --}}
+			@guest
+				{{$formatByUser = ""}}
+			@elseif( Auth::user()->id == $post->user_id )
+				{{$formatByUser = "ml-5 myLightgreen"}}
+			@else
+				{{$formatByUser = "mr-5"}}
+		{{-- make　Posting Css --}}
+			@endguest
+		<div class="row p-3 mx-4 my-5 {{ $formatByUser }} border rounded">
 			<div class="text-center col-3">
 				<p>{{$post->owner->name}}</p>
 				<img alt="" src="http://placehold.jp/150x150.png?text=User Icon">
