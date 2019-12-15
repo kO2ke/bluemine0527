@@ -59,8 +59,14 @@
 			</div>
 		</div>
 		@foreach ($thread->posts()->latest()->get() as $post)
-		
-		<div class="row p-3 mx-4 my-5 {{Auth::user()->id == $post->user_id ? "ml-5 myLightgreen" : "mr-5"}} border rounded">
+		@guest
+			{{$formatByUser = ""}}
+		@elseif( Auth::user()->id == $post->user_id )
+		    {{$formatByUser = "ml-5 myLightgreen"}}
+		@else
+			{{$formatByUser = "mr-5"}}
+		@endguest
+		<div class="row p-3 mx-4 my-5 {{ $formatByUser }} border rounded">
 			<div class="text-center col-3">
 				<p>{{$post->owner->name}}</p>
 				<img alt="" src="http://placehold.jp/150x150.png?text=User Icon">
