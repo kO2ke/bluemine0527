@@ -15,7 +15,7 @@ class ThreadsTable extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string("owner_name");
+            $table->integer("user_id");
             $table->integer("parent_id")->nullable();
             $table->string("title");
             $table->string("description",1000);

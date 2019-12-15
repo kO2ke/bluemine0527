@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','LandingPageController@didLand');
 Route::get('/thread/id={id}','OpenThreadController@didLand');
+Route::post('/createThread', 'OpenThreadController@createThread');
+Route::post('/createPost', 'OpenThreadController@createPost');
 
 Auth::routes();
 

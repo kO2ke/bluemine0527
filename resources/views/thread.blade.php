@@ -7,34 +7,63 @@
 @section("body-class","not-top")
 
 @section("body-contents")
-	<div class="w-100 myLightgreen" style="height:50px;">
-		@if ($parent == null)
+	<div class="w-100 myLightgreen text-light" style="height:50px;">
+		@if ($thread->parent == null)
 		<a class="label parents" href="/">>TOP</a>
 		@else
-		<a class="label parents" href="/thread/id={{$parent->id}}">>{{$parent->title}}</a>
+		<a class="label parents" href="/thread/id={{$thread->parent->id}}">>{{$thread->parent->title}}</a>
 		@endif
 	</div>
 
-	<div class="shadow-lg myGreen myContainer p-2 mx-2 my-5">
+	<div class="shadow-lg myGreen myContainer p-2 m-4">
 		<div class="myContainer thread-name pl-3">
-			<span>ID:{{$thread->id}} </span><span>Title: {{$thread->title}}</span>
+			<span>{{$thread->title}}</span>
 		</div>
-		<div class="bg-light p-4 mt-3 rounded">
-			<div class="p-1 border rounded text-secondary">owner: {{$thread->owner_name}}</div>
-			<div class="mt-3">{{$thread->description}}</div>
+		<div class="bg-light mt-1 py-3 rounded">
+		    <div class="container-fluid ">
+				<div class="row text-secondary">
+					<div class="col-3 text-center">
+						<p>{{$thread->owner->name}}</p>
+						<img alt="" src="http://placehold.jp/100x100.png?text=Owner Icon">
+					</div>
+					<div class="col-9">
+						<div class="mt-3">{{$thread->description}}</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	@include("components.threadList",["listTitle" => "Children", "threadArray" => $children])
+	@include("components.threadList",["listTitle" => "Children", "thread" => $thread, "threadArray" => $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 
 	<div class="border rounded text-center p-1 mt-3">POSTS</div>
 
 	<div class="container-fluid">
-		@foreach ($posts as $post)
-		<div class="row p-3 mx-4 my-2 border rounded">
+		<div class="row p-3 mx-4 my-2 ">
 			<div class="text-center col-3">
-				<p>{{$post->owner_name}}</p>
-				<img alt="" src="http://unsplash.it/150/150/">
+				<p>{{Auth::user()->name}}</p>
+				<img alt="" src="http://placehold.jp/150x150.png?text=Your Icon">
+			</div>
+			<div class="col-9 form">
+				<p>　</p>
+				<form action="/createPost" method="POST">
+					{{ csrf_field() }}
+					<input type="hidden" name="thread_id" value={{$thread->id}}>
+	
+					<div class="form-group">
+						<textarea class="form-control" id="content" name="content" rows="6" placeholder="Enter Message..."></textarea>
+					</div>
+					<div class="form-group">
+						<input type="submit" name="createPost" value="Post Message" class="btn btn-primary float-right">
+					</div>
+				</form>
+			</div>
+		</div>
+		@foreach ($thread->posts()->latest()->get() as $post)
+		
+		<div class="row p-3 mx-4 my-5 {{Auth::user()->id == $post->user_id ? "ml-5 myLightgreen" : "mr-5"}} border rounded">
+			<div class="text-center col-3">
+				<p>{{$post->owner->name}}</p>
+				<img alt="" src="http://placehold.jp/150x150.png?text=User Icon">
 			</div>
 			<div class="col-9">
 				<div class="text-right w-100 text-secondary">{{$post->created_at}}</div>

@@ -12,11 +12,15 @@ class Thread extends Model
         return $this->hasMany("App\Post");
     }
 
-    public function  parentThread(){
+    public function owner(){
+        return $this->belongsTo("App\User","user_id");
+    }
+
+    public function  parent(){
         return $this->belongsTo("App\Thread","parent_id");
     }
 
-    public function  childThread(){
+    public function  children(){
         return $this->hasMany("App\Thread","parent_id");
     }
 }

@@ -10,7 +10,7 @@ $factory->define(Thread::class, function (Faker $faker) {
     $parent_id = $RandIsnull == 1 ? null : $faker->numberBetween(1,100);
     return [
         //
-        "owner_name" => $faker->name,
+        "user_id"   => $faker->numberBetween(1,10),
         "parent_id" => $parent_id,
         "title" => $faker -> sentence(10),
         "description" => $faker -> sentence(40)

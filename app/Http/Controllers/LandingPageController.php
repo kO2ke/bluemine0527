@@ -15,11 +15,11 @@ class LandingPageController extends Controller
         $landingImg    = $landingImages[$randnum];
 
         $children = Thread::whereNull("parent_id")
-                                    ->orderBy("updated_at")
+                                    ->orderBy("updated_at","desc")
                                     ->take(10)
                                     ->get();
 
-        $recentTh = Thread::orderBy("updated_at")->take(10)->get();
+        $recentTh = Thread::orderBy("updated_at", "desc")->take(10)->get();
 
         return view('welcome', compact('children', "recentTh", "landingImg"));
     }

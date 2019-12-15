@@ -1,4 +1,6 @@
 <?php
+
+use App\Thread;
 use Illuminate\Database\Seeder;
 
 
@@ -13,8 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $this->call([
+            UsersTableSeeder::class,
             ThreadsTableSeeder::class,
             PostsTableSeeder::class
         ]);
+
+
+        
     }
 }
