@@ -30,10 +30,7 @@ a{
 }
 
 .myContainer.thread-name{
-	height:30px;
-	line-height: 30px;
 	color:white;
-	font-size: 18px
 }
 
 .myContainer.thread-name.top{
@@ -42,10 +39,7 @@ a{
 
 .label.children{
 	border-radius: 3px;
-	height:20px;
-	line-height: 20px;
 	color:white;
-	padding-left: 20px;
 }
 
 .myContainer.thread-list{
@@ -57,24 +51,23 @@ a{
 	flex-direction: column;
 }
 
-.hoge{
+.list-item{
 	background-color:rgb(255, 255, 255, 1.0);
 	transition: 0.5s;
 	border-bottom:1px solid white;
-	padding:3px 10px;
 	display:flex;
 }
 
-.hoge:hover{
+.list-item:hover{
 		background-color: rgb(255, 255, 255, 0.5);
 		color: white;
 }
 
-.hoge .thread-title{
+.list-item .thread-title{
 	display:block;
 	flex:1;
 }
-.hoge .delete{
+.list-item .delete{
 	display:flex;
 }
 

@@ -13,7 +13,7 @@
 
 	<div class="shadow-lg myGreen myContainer p-2 m-4">
 		<div class="myContainer thread-name pl-3">
-			<span>{{$thread->title}}</span>
+			<h4>{{$thread->title}}</h4>
 		</div>
 		<div class="bg-light mt-1 py-3 rounded">
 		    <div class="container-fluid ">
@@ -31,7 +31,7 @@
 	</div>
 	@include("components.threadList",["listTitle" => "Children", "thread" => $thread, "threadArray" => $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 
-	<div class="border rounded text-center p-1 mt-3">POSTS</div>
+	<h3 class="border rounded text-center p-1 mt-3">POSTS</h3>
 
 	<div class="container-fluid">
 		<div class="row p-3 mx-4 my-2 ">
