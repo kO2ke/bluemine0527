@@ -20,7 +20,7 @@
 				<div class="row text-secondary">
 					<div class="col-3 text-center">
 						<p>{{$thread->owner->name}}</p>
-						<img alt="" src="http://placehold.jp/100x100.png?text=Owner Icon">
+						<img class="w-100"　alt="" src="http://placehold.jp/100x100.png?text=Owner Icon">
 					</div>
 					<div class="col-9">
 						<div class="mt-3">{{$thread->description}}</div>
@@ -29,12 +29,13 @@
 			</div>
 		</div>
 	</div>
+
 	@include("components.threadList",["listTitle" => "Children", "thread" => $thread, "threadArray" => $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 
 	<h3 class="border rounded text-center p-1 mt-3">POSTS</h3>
 
 	<div class="container-fluid">
-		<div class="row p-3 mx-4 my-2 ">
+		<div class="row p-3 mx-2 my-2 ">
 			@guest
 				Please <a class="" href="{{ route('register') }}">{{ __('Register') }} </a> or <a class="" href="{{ route('login') }}">{{ __('Login') }}</a> To Post
 			@else
@@ -69,15 +70,35 @@
 				{{$formatByUser = "mr-5"}}
 		{{-- make　Posting Css --}}
 			@endguest
-		<div class="row p-3 mx-4 my-5 {{ $formatByUser }} border rounded">
-			<div class="text-center col-3">
-				<p>{{$post->owner->name}}</p>
-				<img alt="" src="http://placehold.jp/150x150.png?text=User Icon">
+		<div class="row p-3 mx-1 my-5 {{ $formatByUser }} border rounded">
+			<div class="text-center col-12 d-md-none">
+				<div class="row" style="">
+					<div class="col-2 text-center">
+						<img style="width:25px;" alt="" src="http://placehold.jp/100x100.png?text=User Icon">
+					</div>
+					<div class="col-4 text-left" style="font-size:11px;">
+						<p  class="align-middle">{{$post->owner->name}}</p>
+					</div>
+					<div class="col-6 align-middle" style="font-size:11px;">
+						<div class="text-right w-100 text-secondary">{{$post->created_at}}</div>
+					</div>
+				</div>
 			</div>
-			<div class="col-9">
-				<div class="text-right w-100 text-secondary">{{$post->created_at}}</div>
+			<div class="mt-1 col-12">
 				<div>{{$post->content}}</div>
 			</div>
+				<div class="col-6 mt-3 offset-6 d-none d-md-flex">
+						<div class="col-2 text-center">
+							<img style="width:35px;" alt="" src="http://placehold.jp/100x100.png?text=User Icon">
+						</div>
+						<div class="col-4 text-left" style="font-size:10px;">
+							<p  class="align-middle">{{$post->owner->name}}</p>
+						</div>
+						<div class="col-6 align-middle text-right" style="font-size:10px;">
+							<div class="w-100 text-secondary">{{$post->created_at}}</div>
+						</div>
+					</div>
+				</div>
 		</div>
 		@endforeach
 	</div>
