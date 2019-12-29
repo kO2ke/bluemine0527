@@ -40,12 +40,15 @@ a{
 	border-radius: 1px;
 	padding:      10px;
 	background-color: rgb(80, 130, 153, 0.3);
+	display:flex;
+	flex-direction: column;
 }
 
 .list-item{
 	background-color:rgb(255, 255, 255, 1.0);
 	transition: 0.5s;
 	border-bottom:1px solid white;
+	display:flex;
 }
 
 .list-item:hover{
@@ -55,6 +58,10 @@ a{
 
 .list-item .thread-title{
 	display:block;
+	flex:1;
+}
+.list-item .delete{
+	display:flex;
 }
 
 .not-top .create-thread.form{
