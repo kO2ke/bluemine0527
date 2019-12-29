@@ -29,7 +29,7 @@
 				<div class="col-12">
 					<div class="mt-3">{{$thread->description}}</div>
 				</div>
-				<div class="col-6 offset-6">
+				<div class="col-12">
 					<p class="test-secondary text-right pt-3">Updated At:{{$thread->updated_at}}</p>
 				</div>
 			</div>
