@@ -46,13 +46,15 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 		Please <a class="" href="{{ route('register') }}">{{ __('Register') }} </a> or <a class=""
 			href="{{ route('login') }}">{{ __('Login') }}</a> To Post
 		@else
-		<div class="text-center col-3">
-
-			<p>{{Auth::user()->name}}</p>
-			<img alt="" src="http://placehold.jp/150x150.png?text=Your Icon">
+		<div class="text-center col-12 row">
+			<div class="col-2 text-center">
+				<img style="width:25px;" alt="" src="http://placehold.jp/100x100.png?text=Your Icon">
+			</div>
+			<div class="col-4 text-left" style="font-size:11px;">
+				<p>{{Auth::user()->name}}</p>
+			</div>
 		</div>
-		<div class="col-9 form">
-			<p>　</p>
+		<div class="col-12 form pt-2">
 			<form action="/createPost" method="POST">
 				{{ csrf_field() }}
 				<input type="hidden" name="thread_id" value={{$thread->id}}>
@@ -71,15 +73,21 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 
 	<div class="row">
 		<div class="col-md-9">
-
+			
 			@foreach ($thread->posts()->latest()->get() as $post)
 			{{-- make　Posting Css --}}
 			@guest
-			{{$formatByUser = ""}}
+				@php
+					$formatByUser = ""
+				@endphp
 			@elseif( Auth::user()->id == $post->user_id )
-			{{$formatByUser = "ml-5 myLightgreen"}}
+				@php
+					$formatByUser = "ml-5 myLightgreen"
+				@endphp
 			@else
-			{{$formatByUser = "mr-5"}}
+				@php
+					$formatByUser = "mr-5"
+				@endphp
 			{{-- make　Posting Css --}}
 			@endguest
 
