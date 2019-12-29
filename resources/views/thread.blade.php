@@ -18,7 +18,7 @@
 	<div class="bg-light mt-1 py-3 rounded">
 		<div class="container-fluid ">
 			<div class="row text-secondary">
-				<div class="col-4 row">
+				<div class="col-md-4 row">
 					<div class="col-3 text-center">
 						<img alt="" src="http://placehold.jp/50x50.png?text=Owner Icon">
 					</div>
