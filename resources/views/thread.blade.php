@@ -74,7 +74,7 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 	<div class="row">
 		<div class="col-md-9">
 			
-			@foreach ($thread->posts()->latest()->get() as $post)
+			@foreach ($thread->posts as $post)
 			{{-- make　Posting Css --}}
 			@guest
 				@php
