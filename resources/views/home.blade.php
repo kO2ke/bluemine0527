@@ -1,22 +1,30 @@
-@extends('layouts.app')
+@extends("layouts.main")
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+@section("body-class","not-top")
+
+@section("body-contents")
+<div class="container-fluid">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    <div class="row">
+    <div class="col-md-4 text-center py-4"><h1>MyPage</h1></div><div class="col-md-8"></div>
+        <div class="col-md-4">
             <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
+            <div class="card-header text-center">Profile</div>
+                <div class="card-body text-center">
+                    <img alt="" src="http://placehold.jp/200x200.png?text=Owner Icon">
                 </div>
+                <h4 class="card-body text-center pt-0">
+                    {{$user->name}}
+                </h4>
             </div>
+        </div>
+        <div class="col-md-8">
+            @include("components.threadList",["listTitle" => "Your Threads", "thread" => null, "threadArray" =>
+            $user->threads ?? [], "isPutCreateBtn" => false])
         </div>
     </div>
 </div>
