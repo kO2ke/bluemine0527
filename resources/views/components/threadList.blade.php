@@ -16,7 +16,11 @@
 			@endforeach
 		@endif
 	</div>
-
+	@isset($showAllRoute)
+		<div class="text-right">
+			<a href={{route($showAllRoute)}}>Show All</a>
+		</div>
+	@endisset
 	@if ($isPutCreateBtn ?? false)
 	@include("components.addThreadForm",["thread_id" => $thread->id ?? 0])
 	@endif

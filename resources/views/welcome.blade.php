@@ -4,10 +4,10 @@
 		<div style="font-size: 15px;" class="position-absolute w-100 myContainer thread-name top m-0">Welcome to Bluemine!!</div>
 	</div>
 	<div class="p-3">
-		@include("components.threadList",["listTitle" => "TOP-Thread", "threadArray" => $children ?? [], "isPutCreateBtn" => true])
+		@include("components.threadList",["listTitle" => "TOP-Thread", "threadArray" => $children ?? [], "isPutCreateBtn" => true, "showAllRoute" => "thread.top"])
 	</div>
 	<div class="p-3">
-		@include("components.threadList",["listTitle" => "Recently",   "threadArray" => $recentTh ?? []])
+		@include("components.threadList",["listTitle" => "Recently",   "threadArray" => $recentTh ?? [], "showAllRoute" => "thread.recently"])
 	</div>
 @endsection
 @section("list-title","TOP-Thread")

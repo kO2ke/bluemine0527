@@ -16,6 +16,25 @@ class OpenThreadController extends Controller
         return view("thread", compact("thread"));
     }
 
+    public function searchThread(Request $request){
+        $searchText = $request->searchText;
+        $title      = 'Searched by '.'"'.$searchText.'"';
+        $results    = Thread::where('title', 'like', "%{$searchText}%")->latest()->paginate(15);
+        return view("searchResult", compact("searchText", "results","title"));
+    }
+
+    public function recentThreads(){
+        $title      = 'All Recent Thread';
+        $results    = Thread::latest()->paginate(15);
+        return view("searchResult", compact("results","title"));
+    }
+
+    public function topThreads(){
+        $title      = 'All TOP Thread';
+        $results    = Thread::whereNull("parent_id")->latest()->paginate(15);
+        return view("searchResult", compact("results","title"));
+    }
+
     public function createThread(Request $request){
         $thread = new Thread();
         $thread->title       = $request->title;
