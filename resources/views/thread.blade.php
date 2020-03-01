@@ -7,7 +7,7 @@
 	@if ($thread->parent == null)
 	<a class="label parents" href="/">>TOP</a>
 	@else
-	<a class="label parents" href="/thread/id={{$thread->parent->id}}">>{{$thread->parent->title}}</a>
+	<a class="label parents" href={{route('thread.show'),['id'=>$thread->parent->id]}}>>{{$thread->parent->title}}</a>
 	@endif
 </div>
 
@@ -23,7 +23,7 @@
 						<img alt="" src="http://placehold.jp/50x50.png?text=Owner Icon">
 					</div>
 					<div class="col-9 text-left">
-						<p class="pt-1">{{$thread->owner->name}}</p>
+						<a class="pt-1" href={{route("profile.show",["id"=>$thread->owner->id])}}>{{$thread->owner->name}}</a>
 					</div>
 				</div>
 				<div class="col-12">
@@ -115,7 +115,7 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 						<img style="width:35px;" alt="" src="http://placehold.jp/100x100.png?text=User Icon">
 					</div>
 					<div class="col-4 text-left" style="font-size:10px;">
-						<p class="align-middle">{{$post->owner->name}}</p>
+						<a class="align-middle" href={{route("profile.show",["id"=>$post->owner->id])}}>{{$post->owner->name}}</a>
 					</div>
 					<div class="col-6 align-middle text-right" style="font-size:10px;">
 						<div class="w-100 text-secondary">{{$post->created_at}}</div>

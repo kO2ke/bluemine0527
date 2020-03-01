@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','LandingPageController@didLand');
-Route::get('/thread/id={id}','OpenThreadController@didLand');
+Route::get('/thread/id={id}','OpenThreadController@didLand')->name('thread.show');
+Route::get('/profile/id={id}','ProfileController@show')->name('profile.show');
 Route::post('/createThread', 'OpenThreadController@createThread');
 Route::post('/createPost', 'OpenThreadController@createPost');
 
