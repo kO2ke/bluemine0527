@@ -68,13 +68,13 @@ a{
 	display:flex;
 }
 
-.not-top .create-thread.form{
+.create-thread.form{
 	overflow:hidden;
 	max-height:0px;
 	transition:0.8s;
 }
 
-.not-top .create-thread.form.open{
+.create-thread.form.open{
 	max-height:300px;
 }
 
