@@ -10,7 +10,6 @@ use Log;
 
 class OpenThreadController extends Controller
 {
-    //
     public function didLand($id) {
         $thread = Thread::with(['owner','posts.owner','children','parent'])->find($id);
         return view("thread", compact("thread"));
