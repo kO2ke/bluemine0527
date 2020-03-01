@@ -7,7 +7,7 @@
 			@foreach ($threadArray as $item)
 			<div class='list-item p-2 row'>
 				<div class="col-sm-8">
-					<a class='thread-title' href="/thread/id={{$item->id}}">{{$item->title}}</a>
+					<a class='thread-title' href={{ route('thread.show', ['id' => $item->id]) }}>{{$item->title}}</a>
 				</div>
 				<div class="col-sm-4 text-right">
 					<span class="text-secondary">Recent Update:{{$item->updated_at}}</span>
