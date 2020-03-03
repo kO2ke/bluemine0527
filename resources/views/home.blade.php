@@ -15,11 +15,16 @@
             <div class="card">
             <div class="card-header text-center">Profile</div>
                 <div class="card-body text-center">
-                    <img alt="" src="http://placehold.jp/200x200.png?text=Owner Icon">
+                    <h4 class="card-body text-center pt-0">
+                        {{$user->name}}
+                    </h4>
+                    <img alt="" src={{$user->iconPath()}}>
                 </div>
-                <h4 class="card-body text-center pt-0">
-                    {{$user->name}}
-                </h4>
+                <form method="POST" action={{ route('update.icon')}} enctype="multipart/form-data">
+                    {{ csrf_field() }}
+                    <input type="file"　value="select Image" class="form-control-file m-2" name="photo">
+                    <input type="submit" class="btn btn-primary m-2" value="Upload Icon">
+                </form>
             </div>
         </div>
         <div class="col-md-8">

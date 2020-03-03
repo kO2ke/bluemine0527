@@ -11,7 +11,11 @@ use Log;
 class OpenThreadController extends Controller
 {
     public function didLand($id) {
-        $thread = Thread::with(['owner','posts.owner','children','parent'])->find($id);
+        $thread = Thread::find($id);
+        if(!isset($thread)){
+            return redirect("/");
+        }
+        $thread->load('owner','posts.owner','children','parent');
         return view("thread", compact("thread"));
     }
 

@@ -19,9 +19,11 @@ Route::get('/profile/id={id}','ProfileController@show')->name('profile.show');
 Route::get('/search','OpenThreadController@searchThread')->name('thread.search');
 Route::get('/recently','OpenThreadController@recentThreads')->name('thread.recently');
 Route::get('/topThreads','OpenThreadController@topThreads')->name('thread.top');
+
 Route::post('/createThread', 'OpenThreadController@createThread');
 Route::post('/createPost', 'OpenThreadController@createPost');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/updateIcon', 'HomeController@updateIcon')->name('update.icon');
