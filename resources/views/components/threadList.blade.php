@@ -6,10 +6,10 @@
 		@else
 			@foreach ($threadArray as $item)
 			<div class='list-item p-2 row'>
-				<div class="col-sm-8">
+				<div class="col-sm-12">
 					<a class='thread-title' href={{ route('thread.show', ['id' => $item->id]) }}>{{$item->title}}</a>
 				</div>
-				<div class="col-sm-4 text-right">
+				<div class="col-sm-12 text-right">
 					<span class="text-secondary">Recent Update:{{$item->updated_at}}</span>
 				</div>
 			</div>

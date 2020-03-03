@@ -15,7 +15,7 @@
             <div class="card">
             <div class="card-header text-center">Profile</div>
                 <div class="card-body text-center">
-                    <img alt="" src="http://placehold.jp/200x200.png?text=Owner Icon">
+                    <img alt="" src={{$user->iconPath()}}>
                 </div>
                 <h4 class="card-body text-center pt-0">
                     {{$user->name}}

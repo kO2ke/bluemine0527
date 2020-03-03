@@ -20,10 +20,10 @@
 			<div class="row text-secondary">
 				<div class="col-md-4 row">
 					<div class="col-3 text-center">
-						<img alt="" src="http://placehold.jp/50x50.png?text=Owner Icon">
+						<img alt="" src={{$thread->owner->iconMiniPath()}}>
 					</div>
 					<div class="col-9 text-left">
-						<a class="pt-1" href={{route("profile.show",["id"=>$thread->owner->id])}}>{{$thread->owner->name}}</a>
+						<a class="pt-1" href="{{route("profile.show",["id" => $thread->owner->id])}}" >{{$thread->owner->name}}</a>
 					</div>
 				</div>
 				<div class="col-12">
@@ -48,7 +48,7 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 		@else
 		<div class="text-center col-12 row">
 			<div class="col-2 text-center">
-				<img style="width:25px;" alt="" src="http://placehold.jp/100x100.png?text=Your Icon">
+				<img style="width:25px;" alt="" src="{{Auth::user()->iconMiniPath()}}">
 			</div>
 			<div class="col-4 text-left" style="font-size:11px;">
 				<p>{{Auth::user()->name}}</p>
@@ -74,55 +74,8 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => true])
 	<div class="row">
 		<div class="col-md-9">
 			
-			@foreach ($thread->posts as $post)
-			{{-- make　Posting Css --}}
-			@guest
-				@php
-					$formatByUser = ""
-				@endphp
-			@elseif( Auth::user()->id == $post->user_id )
-				@php
-					$formatByUser = "ml-5 myLightgreen"
-				@endphp
-			@else
-				@php
-					$formatByUser = "mr-5"
-				@endphp
-			{{-- make　Posting Css --}}
-			@endguest
-
-			<div class="row p-3 mx-1 my-3 {{ $formatByUser }} border rounded">
-				<div class="text-center col-12 d-md-none">
-					<div class="row" style="">
-						<div class="col-2 text-center">
-							<img style="width:25px;" alt="" src="http://placehold.jp/100x100.png?text=User Icon">
-						</div>
-						<div class="col-4 text-left" style="font-size:11px;">
-							<p class="align-middle">{{$post->owner->name}}</p>
-						</div>
-						<div class="col-6 align-middle" style="font-size:11px;">
-							<div class="text-right w-100 text-secondary">{{$post->created_at}}</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="mt-1 col-12">
-					<div>{{$post->content}}</div>
-				</div>
-
-				<div class="col-6 mt-3 offset-6 d-none d-md-flex">
-					<div class="col-2 text-center">
-						<img style="width:35px;" alt="" src="http://placehold.jp/100x100.png?text=User Icon">
-					</div>
-					<div class="col-4 text-left" style="font-size:10px;">
-						<a class="align-middle" href={{route("profile.show",["id"=>$post->owner->id])}}>{{$post->owner->name}}</a>
-					</div>
-					<div class="col-6 align-middle text-right" style="font-size:10px;">
-						<div class="w-100 text-secondary">{{$post->created_at}}</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
+		@include('components.posts',["posts" => $thread->posts])
+		
 		</div>
 	</div>
 </div>
