@@ -11,7 +11,7 @@ use Log;
 class OpenThreadController extends Controller
 {
     public function didLand($id) {
-        $thread = Thread::find($id);
+        $thread = Thread::withTrashed()->find($id);
         if(!isset($thread)){
             return redirect("/");
         }
@@ -56,6 +56,26 @@ class OpenThreadController extends Controller
         }
     }
 
+    public function editThread(Request $request)
+    {
+        $thread = Thread::find($request->thread_id);
+
+        if(isset($thread) == false){
+            return redirect("/");
+        }
+
+        $thread->title       = $request->title;
+        $thread->description = $request->description;
+        $thread->save();
+
+        if ($request->thread_id == 0){
+            return redirect("/");
+        }else{
+            $strId = (string)$request->thread_id;
+            return redirect("/thread/id=".$strId);
+        }
+    }
+
     public function createPost(Request $request)
     {
         $post = new Post();
@@ -64,6 +84,24 @@ class OpenThreadController extends Controller
         $post->content = $request->content;
         $post->save();
 
+        return redirect("/thread/id=".(string)$request->thread_id);
+    }
+
+    public function deleteThread(Request $request)
+    {
+        $thread = Thread::find($request->thread_id);
+        if(isset($thread)){
+            $thread->delete();
+        }
+        return redirect("/thread/id=".(string)$request->thread_id);
+    }
+
+    public function restoreThread(Request $request)
+    {
+        $thread = Thread::withTrashed()->find($request->thread_id);
+        if(isset($thread)){
+            $thread->restore();
+        }
         return redirect("/thread/id=".(string)$request->thread_id);
     }
 }

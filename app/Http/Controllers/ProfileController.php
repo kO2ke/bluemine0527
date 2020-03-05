@@ -10,7 +10,7 @@ use Auth;
 class ProfileController extends Controller
 {
    public function show($id){
-       if($id == Auth::user()->id){
+       if(Auth::check() && $id == Auth::user()->id){
            return redirect('home');
        }
        $user = User::find($id);
