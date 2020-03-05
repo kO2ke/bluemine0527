@@ -21,10 +21,10 @@
             <div class="col-2 text-center">
                 <img style="width:25px;" alt="" src={{$post->owner->iconMiniPath()}}>
             </div>
-            <div class="col-4 text-left" style="font-size:11px;">
+            <div class="col-5 text-left" style="font-size:11px;">
                 <p class="align-middle">{{$post->owner->name}}</p>
             </div>
-            <div class="col-6 align-middle" style="font-size:11px;">
+            <div class="col-5 align-middle" style="font-size:11px;">
                 <div class="text-right w-100 text-secondary">{{$post->created_at}}</div>
             </div>
         </div>
@@ -38,10 +38,10 @@
         <div class="col-2 text-center">
             <img style="width:35px;" alt="" src="{{$post->owner->iconMiniPath()}}">
         </div>
-        <div class="col-4 text-left" style="font-size:10px;">
+        <div class="col-5 text-left" style="font-size:10px;">
             <a class="align-middle" href={{route("profile.show",["id"=>$post->owner->id])}}>{{$post->owner->name}}</a>
         </div>
-        <div class="col-6 align-middle text-right" style="font-size:10px;">
+        <div class="col-5 align-middle text-right" style="font-size:10px;">
             <div class="w-100 text-secondary">{{$post->created_at}}</div>
         </div>
     </div>

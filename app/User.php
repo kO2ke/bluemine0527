@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Auth;
 
 class User extends Authenticatable
 {
@@ -45,6 +46,13 @@ class User extends Authenticatable
        return  $this->hasMany("App/Posts");
     }
 
+    public function isLoginUser(){
+        if(Auth::check() == false){
+            return false;
+        }
+        return $this->id == Auth::user()->id;
+    }
+
     //
     private function getProfileImageSaveDir()
     {
@@ -55,7 +63,7 @@ class User extends Authenticatable
     {
         return "./img/profile/";
     }
-    
+
     //アイコン画像のファイル名作成
     private function makeIconName() {
         $imageName = "icon_" . $this->id . ".jpg";
