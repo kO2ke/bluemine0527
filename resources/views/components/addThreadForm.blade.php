@@ -1,6 +1,13 @@
 @guest
-<div class="w-100 text-right">
-	Please <a class="" href="{{ route('register') }}">{{ __('Register') }} </a> or <a class="" href="{{ route('login') }}">{{ __('Login') }}</a> To Create Thread
+<div class="text-right">
+	<div class="rounded p-2 border bg-light border-secondary d-inline-flex">
+	
+	Please 
+	<a class="" href="{{ route('register') }}">{{ __('Register') }} 
+	</a> or 
+	<a class="" href="{{ route('login') }}">{{ __('Login') }}</a> 
+	To Create Thread
+	</div>
 </div>
 @else
 <div class="w-100 text-right">

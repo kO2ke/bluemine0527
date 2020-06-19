@@ -18,17 +18,19 @@ $thread->children()->latest()->get() ?? [], "isPutCreateBtn" => !($thread->isDel
 
 @if($thread->isDeleted() == false)
 <div class="container-fluid">
-	<div class="row p-3 mx-2 my-2 ">
+	<div class="row p-3 mx-2 my-2">
 		@guest
-		Please <a class="" href="{{ route('register') }}">{{ __('Register ') }} </a>{{" or "}}<a class=""
-		href="{{ route('login') }}">{{ __('Login ') }}</a> To Post
+		<div class="rounded p-2 border bg-light border-secondary d-inline-flex">
+			Please <a class="" href="{{ route('register') }}">{{ __('Register ') }} </a>{{" or "}}<a class=""
+			href="{{ route('login') }}">{{ __('Login ') }}</a> To Post
+		</div>
 		@else
 		@include('components.addPostForm', ["thread" => $thread])
 		@endguest
 	</div>
 	
 	<div class="row">
-		<div class="col-md-9">
+		<div class="col-md-8">
 			
 			@include('components.posts',["posts" => $thread->posts])
 			
