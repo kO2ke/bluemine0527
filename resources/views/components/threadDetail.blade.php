@@ -1,58 +1,62 @@
-<div class="shadow-lg myGreen myContainer p-2 m-4">
-	<div class="myContainer thread-name pl-3">
-		<h4>{{$thread->isDeleted() ? "***DELETED THREAD***" : $thread->title}}</h4>
-	</div>
-	<div class="bg-light mt-1 py-3 rounded">
-		<div class="container-fluid ">
-			<div class="row text-secondary">
-				<div class="col-4 row">
-                    @if ( $thread->isDeleted() == false || $thread->owner->isLoginUser())
-					<div class="col-3 text-center">
-						<img alt="" src={{$thread->owner->iconMiniPath()}}>
-					</div>
-					<div class="col-9 text-left">
-						<a class="pt-1" href="{{route("profile.show",["id" => $thread->owner->id])}}" >{{$thread->owner->name}}</a>
-                    </div>
-                    @endif
-                </div>
-				<div class="col-8 row">
-                    <div class="col-8"></div>
-                    @if ($thread->owner->isLoginUser())
-                        {{-- RestoreBtn --}}
-                        @if ( $thread->isDeleted() )
-                            <form method="POST" action="{{route("thread.restore")}}")}}>
-                            {{ csrf_field() }}
-                            @method("put")
-                            <input type="hidden" name="thread_id" value="{{$thread->id}}">
-                            <input type="submit" value="RESTORE" class="btn btn-outline-danger">
-                        </form>
-                        @else
-                        {{-- editBtn   --}}
-                        <div class="col-2 edit">
-                            <input type="button" value="EDIT" class="btn btn-outline-success" data-toggle="modal" data-target="#editThreadModal">
+<div class="container-fluid">
+    <div class="row">
+        <div class="shadow-lg myGreen rounded myContainer col-lg-9 ml-3 mt-lg-5 container-sm p-2">
+            <div class="myContainer thread-name pl-3 py-3">
+                <h4>{{$thread->isDeleted() ? "***DELETED THREAD***" : $thread->title}}</h4>
+            </div>
+            <div class="bg-light mt-1 py-3  rounded">
+                <div class="container-fluid ">
+                    <div class="row text-secondary">
+                        <div class="col-4 row">
+                            @if ( $thread->isDeleted() == false || $thread->owner->isLoginUser())
+                            <div class="col-3 text-center">
+                                <img alt="" src={{$thread->owner->iconMiniPath()}}>
+                            </div>
+                            <div class="col-9 text-left">
+                                <a class="pt-1" href="{{route("profile.show",["id" => $thread->owner->id])}}" >{{$thread->owner->name}}</a>
+                            </div>
+                            @endif
                         </div>
-                        <div class="col-2 delete">
-                        {{-- RestoreBtn --}}
-                        <form method="POST" action="{{route("thread.delete")}}">
-                            {{ csrf_field() }}
-                            @method("delete")
-                            <input type="button" value="DELETE" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteThreadModal">
-                        </form>
+                        <div class="col-8 row">
+                            <div class="col-8"></div>
+                            @if ($thread->owner->isLoginUser())
+                                {{-- RestoreBtn --}}
+                                @if ( $thread->isDeleted() )
+                                    <form method="POST" action="{{route("thread.restore")}}")}}>
+                                    {{ csrf_field() }}
+                                    @method("put")
+                                    <input type="hidden" name="thread_id" value="{{$thread->id}}">
+                                    <input type="submit" value="RESTORE" class="btn btn-outline-danger">
+                                </form>
+                                @else
+                                {{-- editBtn   --}}
+                                <div class="col-2 edit">
+                                    <input type="button" value="EDIT" class="btn btn-outline-success" data-toggle="modal" data-target="#editThreadModal">
+                                </div>
+                                <div class="col-2 delete">
+                                {{-- RestoreBtn --}}
+                                <form method="POST" action="{{route("thread.delete")}}">
+                                    {{ csrf_field() }}
+                                    @method("delete")
+                                    <input type="button" value="DELETE" class="btn btn-outline-danger" data-toggle="modal" data-target="#deleteThreadModal">
+                                </form>
+                                @endif
+                                </div>
+                            @endif
+                        </div>
+                        @if ($thread->isDeleted() == false)
+                        <div class="col-12">
+                            <div class="mt-3">{{$thread->description}}</div>
+                        </div>
+                        <div class="col-12">
+                            <p class="test-secondary text-right pt-3"> Updated At:{{$thread->updated_at}}</p>
+                        </div>
                         @endif
-                        </div>
-                    @endif
+                    </div>
                 </div>
-                @if ($thread->isDeleted() == false)
-				<div class="col-12">
-					<div class="mt-3">{{$thread->description}}</div>
-				</div>
-				<div class="col-12">
-					<p class="test-secondary text-right pt-3"> Updated At:{{$thread->updated_at}}</p>
-				</div>
-                @endif
-			</div>
+            </div>
         </div>
-	</div>
+    </div>
 </div>
 
 @if ($thread->owner->isLoginUser()) 
