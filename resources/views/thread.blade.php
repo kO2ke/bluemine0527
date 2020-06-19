@@ -7,7 +7,7 @@
 	@if ($thread->parent == null)
 	<a class="label parents" href="/">>TOP</a>
 	@else
-	<a class="label parents" href={{route('thread.show'),['id'=>$thread->parent->id]}}>>{{$thread->parent->title}}</a>
+	<a class="label parents" href={{route('thread.show',['id'=>$thread->parent->id])}}>>{{$thread->parent->title}}</a>
 	@endif
 </div>
 
