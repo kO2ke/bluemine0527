@@ -14,10 +14,6 @@ a{
 	font-size:20px;
 }
 
-.myContainer{
-	border: 2px solid grey;
-}
-
 .myGreen{
 	background-color: rgb(11, 101, 128);
 }
@@ -41,6 +37,7 @@ a{
 
 .myContainer.thread-list{
 	margin:5px 8px;
+	border-radius: 1px;
 	padding:      10px;
 	background-color: rgb(80, 130, 153, 0.3);
 	display:flex;
