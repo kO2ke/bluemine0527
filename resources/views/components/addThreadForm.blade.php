@@ -1,13 +1,8 @@
 @guest
 <div class="text-right">
-	<div class="rounded p-2 border bg-light border-secondary d-inline-flex">
-	
-	Please 
-	<a class="" href="{{ route('register') }}">{{ __('Register') }} 
-	</a> or 
-	<a class="" href="{{ route('login') }}">{{ __('Login') }}</a> 
-	To Create Thread
-	</div>
+	<button class="btn btn-outline-secondary bg-light" onclick="location.href='{{ route('login') }}'">
+        {{ __('+ Login To Add Child') }}
+    </button> 
 </div>
 @else
 <div class="w-100 text-right">

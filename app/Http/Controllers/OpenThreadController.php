@@ -16,7 +16,14 @@ class OpenThreadController extends Controller
             return redirect("/");
         }
         $thread->load('owner','posts.owner','children','parent');
-        return view("thread", compact("thread"));
+        if ($thread->parent == null){
+            $parentRoute = "/";
+            $parentTitle = "TOP";
+        }else{
+            $parentRoute = route('thread.show',['id'=>$thread->parent->id]);
+            $parentTitle = $thread->parent->title;
+        }
+        return view("thread", compact("thread", "parentRoute", "parentTitle"));
     }
 
     public function searchThread(Request $request){

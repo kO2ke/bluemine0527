@@ -15,7 +15,7 @@
 {{-- make　Posting Css --}}
 @endguest
 
-<div class="row p-3 mx-1 my-3 {{ $formatByUser }} border rounded">
+<div class="row p-3 mx-1 mb-3 {{ $formatByUser }} shadow-sm border rounded">
     <div class="text-center col-12 d-md-none">
         <div class="row" style="">
             <div class="col-2 text-center">
