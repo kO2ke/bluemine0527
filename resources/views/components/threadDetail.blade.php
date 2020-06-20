@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="shadow-lg myGreen rounded border border-secondary col-lg-9 mx-3 mt-5 container-sm p-2">
+        <div class="shadow myGreen rounded border col-lg-9 mx-3 mt-5 container-sm p-2">
             <div class="myContainer thread-name pl-3 py-3">
                 <h4>{{$thread->isDeleted() ? "***DELETED THREAD***" : $thread->title}}</h4>
             </div>

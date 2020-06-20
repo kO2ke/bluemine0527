@@ -56,8 +56,7 @@ a{
 }
 
 .thread-list .list-item:hover{
-		background-color: rgb(255, 255, 255, 0.5);
-		color: white;
+  background-color: rgb(255, 255, 255, 0.5);
 }
 
 .list-item .thread-title{
@@ -81,5 +80,16 @@ a{
 .label.parents{
 	text-decoration-style: none;
 	line-height: 50px;
+}
+
+.opacity-change{
+	transition: 0.8s;
+}
+
+.opacity-change:hover{
+	opacity: 0.6;
+}
+.pointer-change{
+	cursor: pointer;
 }
 
