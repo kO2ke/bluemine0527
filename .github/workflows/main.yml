@@ -55,7 +55,7 @@ jobs:
             MODEL=$(cat << EOS
             {
                 "model_id":"${{github.event.inputs.model_id}}",
-                "url":"${{github.event.inputs.url}}"
+                "url":"${{github.event.inputs.url}}",
                 "functionality":"${{github.event.inputs.functionality}}",
                 "vendor_name":"${{github.event.inputs.vendor_name}}",
                 "model_description":"${{github.event.inputs.model_description}}",
