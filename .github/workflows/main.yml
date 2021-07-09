@@ -62,6 +62,7 @@ jobs:
                 "version_description":"${{github.event.inputs.version_description}}",
                 "description_url":"${{github.event.inputs.description_url}}"
             }
+            EOS
             )
             echo $(echo $MODEL | jq )
             
