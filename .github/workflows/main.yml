@@ -54,15 +54,14 @@ jobs:
           inlineScript: |
             MODEL=$(cat << EOS
             {
-                "model_id":"${github.event.inputs.model_id}",
-                "url":"${github.event.inputs.url}"
-                "functionality":"${github.event.inputs.functionality}",
-                "vendor_name":"${github.event.inputs.vendor_name}",
-                "model_description":"${github.event.inputs.model_description}",
-                "version_description":"${github.event.inputs.version_description}",
-                "description_url":"${github.event.inputs.description_url}"
+                "model_id":"${{github.event.inputs.model_id}}",
+                "url":"${{github.event.inputs.url}}"
+                "functionality":"${{github.event.inputs.functionality}}",
+                "vendor_name":"${{github.event.inputs.vendor_name}}",
+                "model_description":"${{github.event.inputs.model_description}}",
+                "version_description":"${{github.event.inputs.version_description}}",
+                "description_url":"${{github.event.inputs.description_url}}"
             }
-            EOS
             )
             echo $(echo $MODEL | jq )
             
