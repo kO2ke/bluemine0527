@@ -2,10 +2,46 @@ name: deploy model
 on:
   workflow_dispatch:
     inputs:
-      model:
-        description: ':'
+      subscription_code:
+        description: 'SUBSCRIPTION_CODE of the model to be deployed. This value is also used as the github secret env value. (e.g. gcspre, gcsrls):'
         required: true
-        default: aa
+        default: gcspre
+      env_name:
+        description: 'ENV_NAME of model to be deployed. (e.g. test):'
+        required: true
+        default: test
+      app_code:
+        description: 'APP_CODE of model to be deployed. (e.g. yt):'
+        required: true
+        default: yt
+      model_id:
+        description: 'model_id of model to be deployed. (e.g. model_test_20210706_00):'
+        required: true
+        default: ""
+      url:
+        description: 'url which can download a zip file of the model. (e.g. https://model.zip.download.com):'
+        required: true
+        default: ""
+      functionality:
+        description: 'functionality of model to be deployed. (e.g. 物体検出):'
+        required: true
+        default: ""
+      vendor_name:
+        description: 'vendor_name of model to be deployed. (e.g. SSS):'
+        required: true
+        default: ""
+      model_description:
+        description: 'model_description of model to be deployed. (e.g. リンゴの物体検出):'
+        required: true
+        default: ""
+      version_description:
+        description: 'version_description of model to be deployed. (e.g. 新規作成):'
+        required: true
+        default: ""
+      description_url:
+        description: 'description_url of model to be deployed. (e.g. https://localhost"):'
+        required: true
+        default: ""
 
 
 jobs:
@@ -16,4 +52,17 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-           echo $( echo 　${{ github.event.inputs.model }} | jq)
+            MODEL=$(cat << EOS
+            {
+                "model_id":"${github.event.inputs.model_id}",
+                "url":"${github.event.inputs.url}"
+                "functionality":"${github.event.inputs.functionality}",
+                "vendor_name":"${github.event.inputs.vendor_name}",
+                "model_description":"${github.event.inputs.model_description}",
+                "version_description":"${github.event.inputs.version_description}",
+                "description_url":"${github.event.inputs.description_url}"
+            }
+            EOS
+            )
+            echo $(echo $MODEL | jq )
+            
