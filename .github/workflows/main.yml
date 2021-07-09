@@ -1,0 +1,19 @@
+name: deploy model
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: ':'
+        required: true
+        default: aa
+
+
+jobs:
+  deploy-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: STEP 000
+        uses: azure/CLI@v1
+        with:
+          inlineScript: |
+           echo ${{ github.event.inputs.model }}
