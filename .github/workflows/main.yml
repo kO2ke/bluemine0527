@@ -64,5 +64,6 @@ jobs:
             }
             EOS
             )
+            echo $MODEL
             echo $(echo $MODEL | jq )
             
