@@ -16,4 +16,4 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-           echo ${{ github.event.inputs.model }}
+           echo $( echo 　${{ github.event.inputs.model }} | jq)
